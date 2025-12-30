@@ -698,8 +698,8 @@ Chef Page
     }
 
     .fadein {
-        opacity: 1 !important;
-        transform: none !important;
+        transform: translateY(16px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .lightwidget-widget {
         min-height: 900px; /* スマホは縦に長くなる */
