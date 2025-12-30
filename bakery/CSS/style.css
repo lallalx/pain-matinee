@@ -1,0 +1,730 @@
+/* =========================
+カラーテーマ（モダン・白基調）
+   ========================= */
+:root {
+    --bg-main: #ffffff;
+    --bg-sub: #f5f5f5;
+    --bg-soft: #eeeeee;
+
+    --text-main:#666666;
+    --text-sub: #666666;
+    --white: #ffffff;
+
+    --border-light: #dddddd;
+}
+
+/* =========================
+box-sizing（必須）
+   ========================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* =========================
+ベース
+   ========================= */
+body {
+    margin: 0;
+    font-family: "Zen Old Mincho", serif;
+    color: var(--text-main);
+    background: var(--bg-main);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+画像レスポンシブ
+   ========================= */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================
+文字色制御（重要）
+   ========================= */
+
+/* 画像・動画の上は白文字 */
+.on-media {
+    color: #ffffff;
+}
+
+.on-media .text-on-image,
+.on-media .text-on-image * {
+    color: #ffffff;
+}
+
+/* =========================
+画像上テキスト専用（再利用用）
+   ========================= */
+.text-on-image,
+.text-on-image * {
+    color: #ffffff;
+}
+
+/* 黒背景用 */
+.text-on-dark,
+.text-on-dark * {
+    color: #ffffff;
+}
+
+/* =========================
+動画背景
+   ========================= */
+.video-bg {
+    position: relative;
+    width: 100%;
+    height: min(100vh, 56.25vw);
+    overflow: hidden;
+    background: var(--bg-soft);
+}
+
+.video-bg video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* =========================
+ヒーロー
+   ========================= */
+.hero {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-top: 30vh;
+}
+
+/* =========================
+ヘッダー
+   ========================= */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 72px;               /* ← 高さを明示 */
+    padding: 0 40px;            /* 上下paddingは使わない */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;        /* ← 縦中央揃えの核 */
+    z-index: 1010;
+}
+
+.header .logo {
+    margin: 0;                 /* ← h1のデフォ余白を消す */
+    font-size: 1.4rem;
+    line-height: 1;             /* ← 高さブレ防止 */
+    display: flex;
+    align-items: center;
+}
+
+/* ヘッダーロゴリンク */
+.header .logo a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ホバー時（任意） */
+.header .logo a:hover {
+    opacity: 0.8;
+}
+
+.header nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;        /* ← nav内も中央揃え */
+    list-style: none;
+    gap: 20px;
+}
+
+.header nav a {
+    display: flex;
+    align-items: center;
+    height: 72px;               /* ← ヘッダーと同じ高さ */
+}
+
+.header ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+/* =========================
+サブページ用ヘッダー文字色
+========================= */
+
+.sub-page .header {
+    color: var(--text-main); /* グレー */
+}
+
+.sub-page .header a {
+    color: var(--text-main);
+}
+
+/* ハンバーガーの線もグレーに */
+.sub-page .hamburger span {
+    background: var(--text-main);
+}
+
+
+/* =========================
+ヘッダー：スクロール後
+========================= */
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+    transition: background 0.3s ease;
+    color: var(--text-main); /* グレー */
+}
+
+/* =========================
+ヘッダー：縮小状態
+========================= */
+.header.is-small {
+    height: 56px;            /* 72px → 56px */
+}
+
+/* ロゴも少し縮める */
+.header.is-small .logo {
+    font-size: 1.2rem;
+}
+
+/* navリンクの高さも合わせる */
+.header.is-small nav a {
+    height: 56px;
+}
+/* =========================
+ヘッダー：スクロール後の文字色
+========================= */
+
+/* ロゴ */
+.header.scrolled .logo {
+    color: var(--text-main);
+}
+
+/* ナビリンク */
+.header.scrolled nav a {
+    color: var(--text-main);
+}
+
+/* ハンバーガーの線 */
+.header.scrolled .hamburger span {
+    background: var(--text-main);
+}
+
+
+
+/* =========================
+ガラスボタン（白系）
+   ========================= */
+.btn {
+    padding: 14px 34px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+    font-weight: 600;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* =========================
+セクション
+   ========================= */
+.section {
+    padding: 80px 20px;
+    text-align: center;
+    background: var(--bg-sub);
+}
+
+/* =========================
+メニューグリッド
+   ========================= */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.item img {
+    border-radius: 14px;
+}
+
+/* =========================
+フッター
+   ========================= */
+footer {
+    background: var(--bg-sub);
+    padding: 20px;
+    text-align: center;
+    color: var(--text-sub);
+}
+
+/* =========================
+ハンバーガー
+   ========================= */
+
+.hamburger {
+    position: static;           /* ← fixed をやめる */
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--border-light);
+
+    display: none;              /* PCでは非表示 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hamburger span {
+    width: 18px;
+    height: 2px;
+    background: var(--text-main);
+    margin: 3px 0;
+}
+
+
+
+/* =========================
+背景オーバーレイ
+   ========================= */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.overlay::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ========================
+コンセプト
+   ========================= */
+.concept {
+    padding: 0;
+    background: var(--bg-main);
+}
+
+.concept-image {
+    position: relative;
+}
+
+.concept-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* テキストを画像中央に */
+.concept-text {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.concept-text h2 {
+    margin-bottom: 12px;
+}
+
+
+
+/* =========================
+フェードイン
+   ========================= */
+.fadein {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.fadein.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+Instagram
+   ========================= */
+.instagram {
+    background: var(--bg-main);
+}
+
+.instagram h2 {
+    margin-bottom: 32px;
+}
+
+.instagram.section {
+    padding: 80px 20px;
+}
+
+
+.lightwidget-widget {
+    width: 100%;
+    border: none;
+    overflow: hidden;
+    min-height: 600px; /* PC：9枚 */
+}
+
+.lightwidget-widget img {
+    transition: opacity 0.3s ease;
+}
+
+.lightwidget-widget img:hover {
+    opacity: 0.75;
+}
+
+/* =========================
+Info
+   ========================= */
+.access-info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Google Map 表示 */
+.access-map iframe {
+    width: 600px;      /* PC 固定サイズ */
+    height: 450px;
+    border: 0;
+    margin: 0 auto;    /* 中央寄せ */
+    max-width: 100%;   /* スマホ時は縮む */
+}
+
+/* Google Map 開くボタン */
+.map-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 24px;
+    background: var(--text-main);
+    color: #fff;
+    border-radius: 999px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.parking-link {
+    color: var(--text-main);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.parking-link:hover {
+    opacity: 0.7;
+}
+
+.map-btn {
+    display: inline-flex;          /* 中央揃えしやすい */
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;            /* 中身サイズ */
+    max-width: 100%;
+    padding: 12px 24px;
+
+    border-radius: 999px;
+    background: var(--text-main);
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+}
+
+.map-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* =========================
+ロゴセクション
+   ========================= */
+.logo-sec {
+    background: var(--bg-main);
+    padding: 100px 20px;
+}
+
+.logo-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ロゴ画像 */
+.logo-wrap img {
+    width: 200px;          /* ロゴの存在感 */
+    max-width: 60vw;       /* スマホでも大きすぎない */
+    margin: 0 auto 24px;
+}
+
+/* 店名 */
+.shop-name {
+    font-family: "Zen Old Mincho", "Noto Serif JP", serif;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+/* サブコピー */
+.shop-tagline {
+    color: var(--text-sub);
+    letter-spacing: 0.05em;
+}
+
+/* =========================
+Our bread
+   ========================= */
+.our-bread p {
+    margin-bottom: 56px; /* ← 好みで 32〜56px くらい */
+}
+   /* 3x3 グリッド */
+.bread-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 32px;
+}
+
+/* 1枚 */
+.bread-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+}
+
+/* 画像 */
+.bread-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* ホバーで少しズーム */
+.bread-item:hover img {
+    transform: scale(1.08);
+}
+
+/* オーバーレイ（初期状態：下＋透明） */
+.bread-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* hover時：ふわっと上へ */
+.bread-item:hover .bread-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+Chef Page
+========================= */
+
+.chef-hero {
+    background: var(--bg-main);
+    padding: 140px 20px 80px;
+    text-align: center;
+}
+
+.chef-hero h2 {
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+}
+
+.chef-hero p {
+    color: var(--text-sub);
+}
+
+/* シェフ共通 */
+.chef {
+    background: var(--bg-main);
+}
+
+.chef-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* 画像 */
+.chef-image img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+/* テキスト */
+.chef-text h3 {
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+}
+
+.chef-role {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    color: var(--text-sub);
+}
+
+.chef-text p {
+    margin-bottom: 16px;
+}
+
+/* 左右反転 */
+.chef.reverse .chef-inner {
+    direction: rtl;
+}
+
+.chef.reverse .chef-text {
+    direction: ltr;
+}
+
+
+
+/* =========================
+スマホナビ
+   ========================= */
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+    }
+    /* 動画をスマホでは画面いっぱい縦に */
+    .video-bg {
+        height: 100vh;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 75%;
+        height: 100vh;
+        background: #ffffff;
+        padding-top: 80px;
+        transform: translateX(100%);
+        transition: 0.3s;
+        z-index: 1015;
+        border-left: 1px solid var(--border-light);
+        color: var(--text-sub);
+    }
+    nav a {
+        color: inherit;
+    }
+
+    nav.active {
+        transform: translateX(0);
+        color: var(--text-sub);
+    }
+
+    nav.active a {
+        color: inherit;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .fadein {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .lightwidget-widget {
+        min-height: 900px; /* スマホは縦に長くなる */
+    }
+    .info-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .info-map iframe {
+        height: 260px;
+    }
+
+    .access-map iframe {
+        width: 100%;   /* スマホでは横幅いっぱい */
+        height: 280px; /* スマホで見やすい比率 */
+    }
+    .chef-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .chef.reverse .chef-inner {
+        direction: ltr;
+    }
+}
+
+
+
